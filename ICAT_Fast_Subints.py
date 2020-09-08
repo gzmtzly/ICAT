@@ -357,7 +357,7 @@ predict = theano.function(inputs=[sym_x_eval], outputs=[cla_out_y_eval], givens=
 alpha_stage1 = 50
 alpha_stage2 = 300
 con_mat = []
-for epoch in range(1, 400):
+for epoch in range(1, 200):
     start = time.time()
     d1 = [0.] * len(dis_cost_list)
     d2 = [0.] * len(dis2_cost_list)
