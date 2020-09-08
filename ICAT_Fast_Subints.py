@@ -355,7 +355,7 @@ cla_out_y_eval = ll.get_output(cla_layers[-1], sym_x_eval, deterministic=True)
 predict = theano.function(inputs=[sym_x_eval], outputs=[cla_out_y_eval], givens=cla_avg_givens)
 
 alpha_stage1 = 50
-alpha_stage2 = 300
+#alpha_stage2 = 300
 con_mat = []
 for epoch in range(1, 200):
     start = time.time()
@@ -390,11 +390,11 @@ for epoch in range(1, 200):
             c1_b = train_batch_cla1(batch_data, batch_label, lr)
             c1_b += [0, 0, 0]
 
-        elif epoch > alpha_stage1 and epoch < alpha_stage2:
-            c1_b = train_batch_cla2(batch_data, batch_label, sample_y, lr)
+        # elif epoch > alpha_stage1 and epoch < alpha_stage2:
+          #  c1_b = train_batch_cla2(batch_data, batch_label, sample_y, lr)
 
         else:
-            c1_b = train_batch_cla3(batch_data, batch_label, sample_y, lr)
+            c1_b = train_batch_cla2(batch_data, batch_label, sample_y, lr)
 
         for j in range(len(c)):
             c[j] += c1_b[j]
